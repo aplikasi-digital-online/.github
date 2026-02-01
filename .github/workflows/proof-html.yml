@@ -1,5 +1,48 @@
 name: Proof HTML
-on:
+on:            - nama: Pengaturan Java JDK
+  penggunaan: actions/setup-java@v5.2.0
+  dengan:
+    # Versi Java yang akan diatur. Menerima versi Java lengkap atau semver. Lihat contoh sintaks yang didukung di file README.
+    versi-java: # opsional
+    # Jalur ke file `.java-version`. Lihat contoh sintaks yang didukung di file README.
+    java-version-file: # opsional
+    # Distribusi Java. Lihat daftar distribusi yang didukung di file README.
+    distribusi:
+    # Tipe paket (jdk, jre, jdk+fx, jre+fx)
+    java-package: # opsional, defaultnya adalah jdk
+    # Arsitektur paket (secara default menggunakan arsitektur action runner)
+    arsitektur: # opsional
+    # Jalur ke lokasi JDK terkompresi
+    jdkFile: # opsional
+    # Atur opsi ini jika Anda ingin tindakan tersebut memeriksa versi terbaru yang tersedia yang memenuhi spesifikasi versi.
+    check-latest: # opsional
+    # ID repositori distributionManagement di file pom.xml. Defaultnya adalah `github`
+    server-id: # opsional, defaultnya adalah github
+    # Nama variabel lingkungan untuk nama pengguna untuk otentikasi ke repositori Apache Maven. Nilai default adalah $GITHUB_ACTOR
+    server-username: # opsional, defaultnya adalah GITHUB_ACTOR
+    # Nama variabel lingkungan untuk kata sandi atau token untuk otentikasi ke repositori Apache Maven. Defaultnya adalah $GITHUB_TOKEN
+    kata sandi server: # opsional, defaultnya adalah GITHUB_TOKEN
+    # Jalur tempat file settings.xml akan ditulis. Defaultnya adalah ~/.m2.
+    settings-path: # opsional
+    # Timpa file settings.xml jika ada. Nilai default adalah "true".
+    overwrite-settings: # opsional, defaultnya adalah true
+    # Kunci privat GPG yang akan diimpor. Nilai default adalah string kosong.
+    kunci-pribadi-gpg: # opsional
+    # Nama variabel lingkungan untuk frasa sandi kunci privat GPG. Nilai default adalah $GPG_PASSPHRASE.
+    gpg-passphrase: # opsional
+    # Nama platform build untuk menyimpan dependensi dalam cache. Bisa berupa "maven", "gradle" atau "sbt".
+    cache: # opsional
+    # Jalur ke file dependensi: pom.xml, build.gradle, build.sbt, dll. Opsi ini dapat digunakan dengan opsi `cache`. Jika opsi ini dihilangkan, tindakan akan mencari file dependensi di seluruh repositori. Opsi ini mendukung wildcard dan daftar nama file untuk menyimpan beberapa dependensi dalam cache.
+    cache-dependency-path: # opsional
+    # Solusi untuk meneruskan status pekerjaan ke langkah posting pekerjaan. Variabel ini tidak dimaksudkan untuk pengaturan manual.
+    status pekerjaan: # opsional, defaultnya adalah ${{ job.status }}
+    # Token yang digunakan untuk otentikasi saat mengambil manifes versi yang dihosting di github.com, seperti untuk Microsoft Build dari OpenJDK. Saat menjalankan tindakan ini di github.com, nilai default sudah cukup. Saat dijalankan di GHES, Anda dapat memberikan token akses pribadi untuk github.com jika Anda mengalami pembatasan laju permintaan.
+    token: # opsional, defaultnya adalah ${{ github.server_url == 'https://github.com' && github.token || '' }}
+    # Nama ID Toolchain Maven jika nama default "${distribution}_${java-version}" tidak diinginkan. Lihat contoh sintaks yang didukung di file Penggunaan Lanjutan.
+    mvn-toolchain-id: # opsional
+    # Nama Vendor Toolchain Maven jika nama default "${distribution}" tidak diinginkan. Lihat contoh sintaks yang didukung di file Penggunaan Lanjutan
+    mvn-toolchain-vendor: # opsional
+          
   push:
   workflow_dispatch:
 jobs:
