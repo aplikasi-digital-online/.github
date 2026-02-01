@@ -1,5 +1,29 @@
 name: Proof HTML
-on:
+on:            - nama: Unduh Artefak Bangunan
+  penggunaan: actions/download-artifact@v7.0.0
+  dengan:
+    # Nama artefak yang akan diunduh. Jika tidak ditentukan, semua artefak untuk proses ini akan diunduh.
+    nama: # opsional
+    # ID artefak yang akan diunduh, dipisahkan koma. Input `artifact-ids` atau `name` dapat digunakan, tetapi tidak keduanya.
+    ID artefak: # opsional
+    # Jalur tujuan. Mendukung ekspansi tilde dasar. Secara default adalah $GITHUB_WORKSPACE
+    jalur: # opsional
+    # Pola glob yang cocok dengan artefak yang harus diunduh. Diabaikan jika nama ditentukan.
+    pola: # opsional
+    # Saat beberapa artefak cocok, ini mengubah perilaku direktori tujuan. Jika benar, artefak yang diunduh akan berada di direktori yang sama yang ditentukan oleh path. Jika salah, artefak yang diunduh akan diekstrak ke dalam direktori bernama individual di dalam path yang ditentukan.
+    merge-multiple: # opsional, defaultnya false
+    # Token GitHub yang digunakan untuk otentikasi dengan API GitHub. Ini diperlukan saat mengunduh artefak dari repositori yang berbeda atau dari eksekusi alur kerja yang berbeda. Jika ini tidak ditentukan, tindakan akan mencoba mengunduh artefak dari repositori saat ini dan eksekusi alur kerja saat ini.
+    github-token: # opsional
+    # Pemilik repositori dan nama repositori digabungkan dengan "/". Jika github-token ditentukan, ini adalah repositori tempat artefak akan diunduh.
+    repositori: # opsional, defaultnya adalah ${{ github.repository }}
+    # ID dari eksekusi alur kerja tempat artefak unduhan yang diinginkan diunggah. Jika github-token ditentukan, ini adalah eksekusi tempat artefak akan diunduh.
+    run-id: # opsional, defaultnya adalah ${{ github.run_id }}
+          steps:
+  - uses: actions/checkout@v6
+  - uses: actions/setup-go@v6
+    with:
+      go-version: '1.23'
+  - run: go version
   push:
   workflow_dispatch:
 jobs:
